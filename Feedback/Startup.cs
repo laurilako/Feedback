@@ -9,7 +9,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Feedback.Models;
 
 namespace Feedback
 {
@@ -25,7 +26,12 @@ namespace Feedback
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<FeedbackContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+
             services.AddControllers();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
