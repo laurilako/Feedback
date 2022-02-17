@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Feedback.Models;
+using Feedback.FeedbackData;
 
 namespace Feedback
 {
@@ -26,11 +27,13 @@ namespace Feedback
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FeedbackContext>(opt => opt.UseInMemoryDatabase("FeedbackList"));
 
             services.AddControllers();
 
+            // Dependecy injection, kerrotaan mit‰ repository‰ k‰ytt‰‰ (kysyy Ifeedback, annetaan MockFeedback..
+            // services.AddScoped<IFeedback, MockFeedback>();
 
+            services.AddScoped<IFeedback, MockFeedback>();
 
         }
 

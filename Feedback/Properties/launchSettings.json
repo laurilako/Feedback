@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/feedbackitems",
+      "launchUrl": "api/feedback",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "Feedback": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/feedbackitems",
+      "launchUrl": "api/feedback",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
