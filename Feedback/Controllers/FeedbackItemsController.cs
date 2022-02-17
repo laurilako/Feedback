@@ -82,7 +82,8 @@ namespace Feedback.Controllers
             _context.FeedbackItems.Add(feedbackItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFeedbackItem", new { id = feedbackItem.Id }, feedbackItem);
+            // return CreatedAtAction("GetFeedbackItem", new { id = feedbackItem.Id }, feedbackItem);
+            return CreatedAtAction(nameof(GetFeedbackItem), new { id = feedbackItem.Id }, feedbackItem);
         }
 
         // DELETE: api/FeedbackItems/5
