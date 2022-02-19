@@ -6,6 +6,11 @@ namespace Feedback.FeedbackData
 {
     public class MockFeedback : IFeedback
     {
+        public void CreateFeedback(FeedbackItem newFeedback)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<FeedbackItem> GetFeedbackItems()
         {
             var items = new List<FeedbackItem>
@@ -24,15 +29,9 @@ namespace Feedback.FeedbackData
             return new FeedbackItem {Id=0, Name="Jane", FeedbackString="Please dont do this", Status=true};
         }
 
-
-
-
-
-
-
-
-
-
-
+        public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
