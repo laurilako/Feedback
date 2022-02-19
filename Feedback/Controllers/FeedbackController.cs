@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Feedback.Models;
 using Feedback.FeedbackData;
+using Feedback.Dtos;
+using AutoMapper;
 
 namespace Feedback.Controllers
 {
@@ -13,10 +15,13 @@ namespace Feedback.Controllers
     {
 
         private readonly IFeedback _repository;
-        // Repositoryn määrittäminen, riippuen kontekstista
-        public FeedbackController(IFeedback repository)
+        private readonly IMapper _mapper;
+
+        // Repositoryn määrittäminen ja mapperi olion tuominen kontrollerille
+        public FeedbackController(IFeedback repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         // GET api/feedback/
@@ -24,17 +29,34 @@ namespace Feedback.Controllers
         public ActionResult<IEnumerable<FeedbackItem>> GetFeedbackItems()
         {
             var feedbackItems = _repository.GetFeedbackItems();
-            return Ok(feedbackItems);
+
+            if (feedbackItems == null) {
+                return NotFound();
+            } else {
+                return Ok(_mapper.Map<IEnumerable<FeedbackReadDto>>(feedbackItems));
+            }
         }
 
         // GET api/feedback/{id}
         [HttpGet("{id}")]
-        public ActionResult <FeedbackItem> GetItemById(int id)
+        public ActionResult <FeedbackReadDto> GetItemById(int id)
         {
             var feedbackItem = _repository.GetItemById(id);
-            return Ok(feedbackItem);
 
+            if (feedbackItem == null) {
+                return NotFound();
+            } else {
+                return Ok(_mapper.Map<FeedbackReadDto>(feedbackItem));
+            }
         }
+
+        // TODO: Post, Put Delete... 
+
+        // POST api/feedback
+        // [HttpPost]
+
+
+
 
     //    private readonly FeedbackContext _context;
 

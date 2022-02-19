@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Feedback.Models;
 using Feedback.FeedbackData;
 using Microsoft.Data.SqlClient;
+using AutoMapper;
 
 namespace Feedback
 {
@@ -41,6 +42,10 @@ namespace Feedback
 
 
             services.AddControllers();
+
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
             // Dependecy injection, kerrotaan mit‰ repository‰ k‰ytt‰‰ (esim kysyy Ifeedback, annetaan MockFeedback. tai sqlFeedback
             // services.AddScoped<IFeedback, MockFeedback>();
