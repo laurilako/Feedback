@@ -13,7 +13,13 @@ namespace Feedback.FeedbackData
         FeedbackItem GetItemById(int id);
 
         // Luo uusi palaute
-        void CreateFeedback(FeedbackItem newFeedback);
+        void CreateFeedback(FeedbackItem feedback);
+
+        // Päivitä palautetta (pääasiassa status false->true)
+        void UpdateFeedback(FeedbackItem feedback);
+
+        // Poista palaute
+        void DeleteFeedback(FeedbackItem feedback);
 
         bool SaveChanges();
     }

@@ -9,15 +9,13 @@ namespace Feedback.Profiles
     {
         public FeedbackItemsProfile()
         {
-            // Src -> Target,
+            // Src -> Target
 
             CreateMap<FeedbackItem, FeedbackReadDto>();
 
             CreateMap<FeedbackCreateDto, FeedbackItem>();
+
+            CreateMap<FeedbackUpdateDto, FeedbackItem>();
         }
-
-
-
-
     }
 }

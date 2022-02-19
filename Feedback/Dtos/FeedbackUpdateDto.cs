@@ -2,7 +2,7 @@
 
 namespace Feedback.Dtos
 {
-    public class FeedbackCreateDto
+    public class FeedbackUpdateDto
     {
         // Mitä vaaditaan POST pyyntöön, eli uuden palautteen luomiseen.
         // ID ei tarvita.

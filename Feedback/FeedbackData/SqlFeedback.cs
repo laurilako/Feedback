@@ -15,14 +15,14 @@ namespace Feedback.FeedbackData
         }
 
         // Luo uusi palaute databaseen
-        public void CreateFeedback(FeedbackItem newFeedback)
+        public void CreateFeedback(FeedbackItem feedback)
         {
-            if(newFeedback == null)
+            if(feedback == null)
             {
                 throw new ArgumentNullException();
             } else
             {
-                _context.FeedbackItems.Add(newFeedback);
+                _context.FeedbackItems.Add(feedback);
             }
         }
 
@@ -36,6 +36,23 @@ namespace Feedback.FeedbackData
         public FeedbackItem GetItemById(int id)
         {
             return _context.FeedbackItems.FirstOrDefault(p => p.Id == id);
+        }
+
+        // Päivitä feedbackia
+        public void UpdateFeedback(FeedbackItem feedback)
+        {
+            // Dbcontext päivittää feedbackin
+        }
+
+        // Poista feedback
+        public void DeleteFeedback(FeedbackItem feedback)
+        {
+            if(feedback == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            _context.FeedbackItems.Remove(feedback);
         }
 
         // tallenna muutokset databaseen

@@ -4,6 +4,7 @@ using Feedback.Models;
 using Feedback.FeedbackData;
 using Feedback.Dtos;
 using AutoMapper;
+using System;
 
 namespace Feedback.Controllers
 {
@@ -13,7 +14,6 @@ namespace Feedback.Controllers
     [ApiController]
     public class FeedbackController : ControllerBase
     {
-
         private readonly IFeedback _repository;
         private readonly IMapper _mapper;
 
@@ -65,6 +65,45 @@ namespace Feedback.Controllers
             // Palautuksen Headereissa annetaan location, minne uusi palaute tehtiin, em. /api/feedback/8
             return CreatedAtRoute(nameof(GetItemById), new {Id = feedbackReadDto.Id}, feedbackReadDto);
         }
+
+        // PUT api/feedback/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateFeedback(int id, FeedbackUpdateDto feedbackUpdateDto)
+        {
+            var foundItem = _repository.GetItemById(id);
+            if (foundItem == null)
+            {
+                return NotFound();
+            }
+
+            Console.Write(foundItem);
+            
+            _mapper.Map(feedbackUpdateDto, foundItem);
+
+            // Ei tarpeellinen, mutta havainnoi mitä tehdään.
+            _repository.UpdateFeedback(foundItem);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        // DELETE api/feedback/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteFeedback(int id)
+        {
+            var foundFeedback = _repository.GetItemById(id);
+            if(foundFeedback == null)
+            {
+                return NotFound();
+            }
+            _repository.DeleteFeedback(foundFeedback);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
 
         //    private readonly FeedbackContext _context;
 

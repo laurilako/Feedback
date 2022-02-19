@@ -6,7 +6,12 @@ namespace Feedback.FeedbackData
 {
     public class MockFeedback : IFeedback
     {
-        public void CreateFeedback(FeedbackItem newFeedback)
+        public void CreateFeedback(FeedbackItem feedback)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeleteFeedback(FeedbackItem feedback)
         {
             throw new System.NotImplementedException();
         }
@@ -30,6 +35,11 @@ namespace Feedback.FeedbackData
         }
 
         public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdateFeedback(FeedbackItem feedback)
         {
             throw new System.NotImplementedException();
         }
