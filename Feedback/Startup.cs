@@ -36,11 +36,10 @@ namespace Feedback
                 Configuration.GetConnectionString("FeedbackCon"));
             builder.Password = Configuration["DbPassword"];
 
-            
             services.AddDbContext<FeedbackContext>(opt => opt.UseSqlServer
                 (builder.ConnectionString));
 
-
+            services.AddCors();
             services.AddControllers();
 
 
@@ -64,6 +63,14 @@ namespace Feedback
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // Cors policyn asettaminen
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
+
 
             app.UseAuthorization();
 
