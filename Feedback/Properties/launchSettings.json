@@ -15,7 +15,8 @@
       "launchUrl": "api/feedback",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "ancmHostingModel": "OutOfProcess"
     },
     "Feedback": {
       "commandName": "Project",

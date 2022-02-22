@@ -32,12 +32,16 @@ namespace Feedback
 
 
             // Haetaan DbPassword user-secretseistä ja rakennetaan connectionString.
-            var builder = new SqlConnectionStringBuilder(
-                Configuration.GetConnectionString("FeedbackCon"));
-            builder.Password = Configuration["DbPassword"];
+            //var builder = new SqlConnectionStringBuilder(
+            //    Configuration.GetConnectionString("FeedbackCon"));
+            //builder.Password = Configuration["DbPassword"];
 
-            services.AddDbContext<FeedbackContext>(opt => opt.UseSqlServer
-                (builder.ConnectionString));
+            //services.AddDbContext<FeedbackContext>(opt => opt.UseSqlServer
+            //    (builder.ConnectionString));
+
+
+            services.AddDbContext<FeedbackContext>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("DB_STRING")));
 
             services.AddCors();
             services.AddControllers();
