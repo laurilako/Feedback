@@ -21,6 +21,7 @@ namespace Feedback.FeedbackData
         // Poista palaute
         void DeleteFeedback(FeedbackItem feedback);
 
+        // Tallenna muutokset
         bool SaveChanges();
     }
 }

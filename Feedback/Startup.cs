@@ -32,6 +32,9 @@ namespace Feedback
 
 
             // Haetaan DbPassword user-secretseistä ja rakennetaan connectionString.
+            
+            // Ei tarvita enää, kun siirretään DB ja API azureen.
+             
             //var builder = new SqlConnectionStringBuilder(
             //    Configuration.GetConnectionString("FeedbackCon"));
             //builder.Password = Configuration["DbPassword"];
@@ -68,7 +71,7 @@ namespace Feedback
 
             app.UseRouting();
 
-            // Cors policyn asettaminen
+            // Cors policyn asettaminen, voidaan lokaalissa suorittaa sekä APIa, että frontia samassa originissa.
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()

@@ -50,8 +50,6 @@ namespace Feedback.Controllers
             }
         }
 
-        // TODO: Update ja Delete metodit... 
-
         // POST api/feedback
         [HttpPost]
         public ActionResult <FeedbackReadDto> CreateFeedback(FeedbackCreateDto feedbackCreateDto)
@@ -63,6 +61,7 @@ namespace Feedback.Controllers
             var feedbackReadDto = _mapper.Map<FeedbackReadDto>(feedbackModel);
 
             // Palautuksen Headereissa annetaan location, minne uusi palaute tehtiin, em. /api/feedback/8
+            // Ei tarpeellinen nykyisessä applikaatiossa, mutta hyvä jos laajentaa applikaatiota.
             return CreatedAtRoute(nameof(GetItemById), new {Id = feedbackReadDto.Id}, feedbackReadDto);
         }
 
@@ -80,7 +79,7 @@ namespace Feedback.Controllers
             
             _mapper.Map(feedbackUpdateDto, foundItem);
 
-            // Ei tarpeellinen, mutta havainnoi mitä tehdään.
+            // Ei tarpeellinen, mutta havainnoi mitä tehdään. "Päivitetään repositoriota"
             _repository.UpdateFeedback(foundItem);
 
             _repository.SaveChanges();

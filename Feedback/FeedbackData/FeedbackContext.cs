@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Feedback.Models;
 
+// Konteksti databasen käytön/valinnan suhteen
 namespace Feedback.FeedbackData
 {
     public class FeedbackContext : DbContext

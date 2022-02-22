@@ -12,6 +12,8 @@ namespace Feedback
         {
             var host = CreateHostBuilder(args).Build();
 
+            // Automaattinen migraatio / skeemaaminen azurea varten
+
             var service = (IServiceScopeFactory)host.Services.GetService(typeof(IServiceScopeFactory));
             
             using(var db = service.CreateScope().ServiceProvider.GetService<FeedbackContext>())
