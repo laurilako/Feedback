@@ -17,7 +17,7 @@ namespace Feedback.Models
         
         [Required]
         [DefaultValue(false)]
-        public bool Status { get; set; } // Vastattu? true tai false
+        public bool Status { get; set; } // Nähty? true tai false
 
     }
 }
